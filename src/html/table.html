@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Таблица</title>
+		<link rel="stylesheet" href="css/style.css">
+    </head>
+	
+    <body>
+	
+		<header class="main-header">
+			<div class="container">
+				<nav class="main-menu">
+					<ul>
+						<li><a href="index.html">О себе</a></li>
+						<li><a href="task.html">Задание</a></li>
+						<li><a href="table.html">Таблица</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+        <ul class="left-menu">
+            <li onclick="switchSection('orders')">Заказы</li>
+            <li onclick="switchSection('clients')">Клиенты</li>
+            <li onclick="switchSection('seasonTickets')">Абонименты</li>
+            <li onclick="switchSection('trainings')">Тренировки</li>
+            <li onclick="switchSection('sportPrograms')">Спортивные программы</li>
+            <li onclick="switchSection('trainers')">Тренера</li>
+        </ul>
+        <main>
+            <section id="clients">
+                <div class="table-wrapper">
+                    <table class="table">
+                        <caption>
+                            Клиенты
+                        </caption>
+                        <thead>
+                        <tr class="title-table">
+                            <th>id</th>
+                            <th>Имя Фамилия</th>
+                            <th>Номер</th>
+                            <th>Оплачено заказов</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="clientsTable" class="table-body"></tbody>
+                    </table>
+                    <div style="text-align: center;">
+                        <button class="btn btn-green" onclick="creatingClient()">Добавить</button>
+                    </div>
+                </div>
+                <div id="clientForm" class="edit-layout">
+                    <form class="edit-form" id="_clientForm">
+                        <input type="hidden" id="clientId">
+                        <label><span>Имя Фамилия*:</span><input type="text" id="clientName" autofocus required></label><br />
+                        <label><span>Номер*:</span><input type="text" id="clientPhone" required pattern="^[0-9]{6,11}$"> (6-11 цифр)<br /></label>
+                        <input type="submit" value="Отправить"><br />
+                        * поля обязательны к заполнению
+
+                    </form>
+                </div>
+            </section>
+
+            <section id="orders">
+                <div class="table-wrapper">
+                    <table class="table">
+                        <caption>
+                            Заказы
+                        </caption>
+                        <thead>
+                        <tr class="title-table">
+                            <th>id</th>
+                            <th>Оплачено</th>
+                            <th>Имя клиента</th>
+                            <th>Цена абонимента</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="ordersTable" class="table-body"></tbody>
+                    </table>
+                    <div style="text-align: center;">
+                        <button class="btn btn-green" onclick="creatingOrder()">Добавить</button>
+                    </div>
+                </div>
+                <div id="orderForm" class="edit-layout">
+                    <form class="edit-form" id="_orderForm">
+                        <input type="hidden" id="orderId">
+                        <label><input id="isPaid" type="checkbox"/> Заказ оплачен* </label><br />
+                        <label><span>Клиент*:</span><select id="idClient" required></select></label><br />
+                        <label><span>Абонимент*:</span><select id="idSeasonTicket" required></select></label><br />
+                        <input type="submit" value="Отправить"><br />
+                        * поля обязательны к заполнению <br />
+                    </form>
+                </div>
+            </section>
+
+            <section id="seasonTickets">
+                <div class="table-wrapper">
+                    <table class="table">
+                        <caption>
+                            Абонименты
+                        </caption>
+                        <thead>
+                        <tr class="title-table">
+                            <th>id</th>
+                            <th>Цена</th>
+                            <th>Месяц</th>
+                            <th>Заказов</th>
+                            <th>Названиие <тренировки></тренировки></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="seasonTicketsTable" class="table-body"></tbody>
+                    </table>
+                    <div style="text-align: center;">
+                        <button class="btn btn-green" onclick="creatingSeasonTicket()">Добавить</button>
+                    </div>
+                </div>
+                <div id="seasonTicketForm" class="edit-layout">
+                    <form class="edit-form" id="_seasonTicketForm">
+                        <input type="hidden" id="seasonTicketId">
+                        <label><span>Цена*:</span><input type="text" id="seasonTicketPrice" required pattern="^[0-9]{3,5}$"> (3-5 цифр)<br /></label>
+                        <label><span>Месяц*:</span><select id="seasonTicketMouth" required ></select><br /></label>
+                        <label><span>Тренировка*:</span></label><select id="idTraining"></select></label><br />
+                        <input type="submit" value="Отправить"><br />
+                        * поля обязательны к заполнению <br />
+                    </form>
+                </div>
+            </section>
+
+            <section id="trainings">
+                <div class="table-wrapper">
+                    <table class="table">
+                        <caption>
+                            Тренировки
+                        </caption>
+                        <thead>
+                        <tr class="title-table">
+                            <th>id</th>
+                            <th>Название тренировки</th>
+                            <th>Имя Тренера</th>
+                            <th>Название программы</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="trainingsTable" class="table-body"></tbody>
+                    </table>
+                    <div style="text-align: center;">
+                        <button class="btn btn-green" onclick="creatingTraining()">Добавить</button>
+                    </div>
+                </div>
+                <div id="trainingForm" class="edit-layout">
+                    <form class="edit-form" id="_trainingForm">
+                        <input type="hidden" id="trainingId">
+                        <label><span>Название*:</span><input type="text" id="trainingName" autofocus required></label><br />
+                        <label><span>Тренер*:</span><select id="idTrainer"></select></label><br />
+                        <label><span>Спортивная программа*:</span><select id="idSportProgram"></select></label><br />
+                        <input type="submit" value="Отправить"><br />
+                        * поля обязательны к заполнению <br />
+                    </form>
+                </div>
+            </section>
+
+            <section id="trainers">
+                <div class="table-wrapper">
+                    <table class="table">
+                        <caption>
+                            Тренеры
+                        </caption>
+                        <thead>
+                        <tr class="title-table">
+                            <th>id</th>
+                            <th>Имя Фамилия</th>
+                            <th>Зарплата</th>
+                            <th>Тренировки</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="trainersTable" class="table-body"></tbody>
+                    </table>
+                    <div style="text-align: center;">
+                        <button class="btn btn-green" onclick="creatingTrainer()">Добавить</button>
+                    </div>
+                </div>
+                <div id="trainerForm" class="edit-layout">
+                    <form class="edit-form" id="_trainerForm">
+                        <input type="hidden" id="trainerId">
+                        <label><span>Имя Фамилия*:</span><input type="text" id="trainerName" autofocus required></label><br />
+                        <label><span>Зарплата*:</span><input type="text" id="trainerSalary" required pattern="^[0-9]{0,6}$"> (0-6 цифр)<br /></label>
+                        <input type="submit" value="Отправить"><br />
+                        * поля обязательны к заполнению
+
+                    </form>
+                </div>
+            </section>
+
+            <section id="sportPrograms">
+                <div class="table-wrapper">
+                    <table class="table">
+                        <caption>
+                            Программы
+                        </caption>
+                        <thead>
+                        <tr class="title-table">
+                            <th>id</th>
+                            <th>Название программы</th>
+                            <th>Тренировки</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="sportProgramsTable" class="table-body"></tbody>
+                    </table>
+                    <div style="text-align: center;">
+                        <button class="btn btn-green" onclick="creatingSportProgram()">Добавить</button>
+                    </div>
+                </div>
+                <div id="sportProgramForm" class="edit-layout">
+                    <form class="edit-form" id="_sportProgramForm">
+                        <input type="hidden" id="sportProgramId">
+                        <label><span>Название программы*:</span><input type="text" id="sportProgramName" autofocus required></label><br />
+                        <input type="submit" value="Отправить"><br />
+                        * поля обязательны к заполнению
+
+                    </form>
+                </div>
+            </section>
+        </main>
+		<footer class="main-footer">
+			<div class="container">
+				<div class="footer-subscribe">&copy;Мельникова&Гачегова</div>
+			</div>
+		</footer>
+        <script src="js/table.js"></script>
+    </body>
+	
+</html>

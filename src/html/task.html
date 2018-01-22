@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Задание</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/task.js"></script>
+    </head>
+    <body>
+	
+	<header class="main-header">
+			<div class="container">
+				<nav class="main-menu">
+					<ul>
+						<li><a href="index.html">О себе</a></li>
+						<li><a href="task.html">Задание</a></li>
+						<li><a href="table.html">Таблица</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		
+		<section class="features">
+			<div class="middle-container">
+				<form class="contacts-form" onsubmit="return Request();">
+					<table>
+						<tr>
+							<td class="title">
+								<label for="inputStroke">Входная строка:</label>
+							</td>
+							<td class="field">
+								<input type="text" id="inputStroke" name="inputStroke" placeholder="Введите числа через запятую, без пробелов" pattern="^[-0-9,]+$">
+							</td>
+						</tr>
+						<tr>
+							<td class="title"></td>
+							<td class="field">
+								<input type="submit" id="input-button" class="btn btn-green"  value="Отправить">
+							</td>
+						</tr>
+						<tr>
+							<td class="title">
+								<label>Результат:</label>
+							</td>
+							<td class="field">
+								<textarea id="result"></textarea>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</section>
+       
+		<footer class="main-footer">
+			<div class="container">
+				<div class="footer-subscribe">&copy;Мельникова&Гачегова</div>
+			</div>
+		</footer>
+	   
+    </body>
+</html>
